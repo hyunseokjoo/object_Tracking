@@ -12,7 +12,6 @@ using namespace cv;
 using namespace std;
 
 int main(int ac, char** av) {
-	
 	cv::VideoCapture cap("video/coffee.mp4");
 	cv::VideoWriter videoWriter;
 	cv::Mat videoFrame;
@@ -20,7 +19,6 @@ int main(int ac, char** av) {
 
 	if (!cap.isOpened()) return 0;
 
-	//초기 트래킹 할 객체 설정 
 	float videoFPS = cap.get(cv::CAP_PROP_FPS);
 	cv::Ptr<cv::Tracker> trac = cv::TrackerCSRT::create();
 	cap.read(videoFrame);
@@ -42,7 +40,7 @@ int main(int ac, char** av) {
 		cv::imshow("video", videoFrame);
 		if (cv::waitKey(1000/ videoFPS) == 27) break;
 	};
-
+	 
 
 	cap.release();
 	destroyAllWindows;
